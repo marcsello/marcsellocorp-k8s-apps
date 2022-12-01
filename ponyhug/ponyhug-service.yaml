@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ponyhug-backend-svc
+  namespace: ponyhug
+  labels:
+    app: ponyhug-backend
+spec:
+  type: ClusterIP
+  ports:
+    - name: ponyhug-backend
+      port: 80
+      targetPort: 8000
+      protocol: TCP
+  selector:
+    app: ponyhug-backend

@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ponyhug-backend-conf
+  namespace: ponyhug
+  labels:
+    app: ponyhug-backend
+data:
+  SENTRY_RELEASE_ID: 2022-final
+  SENTRY_ENVIRONMENT: prod
+  ALLOWED_ORIGINS: "https://hugs.hunbrony.hu"

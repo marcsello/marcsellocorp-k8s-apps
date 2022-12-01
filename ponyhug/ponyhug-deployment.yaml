@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ponyhug-backend
+  namespace: ponyhug
+  labels:
+    app: ponyhug-backend
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: ponyhug-backend
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: ponyhug-backend
+    spec:
+      containers:
+        - name: ponyhug-backend
+          image: marcsello/ponyhug-backend
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8000
+          envFrom:
+            - configMapRef:
+                name: ponyhug-backend-conf
+            - secretRef:
+                name: ponyhug-backend-secrets
+          livenessProbe:
+            initialDelaySeconds: 2
+            periodSeconds: 5
+            httpGet:
+              path: /healthz
+              port: 8000

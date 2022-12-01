@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: krimo-backend-conf
+  namespace: krimo
+  labels:
+    app: krimo-backend
+data:
+  REDIS_URL: "redis://krimo-redis-svc:6379/0"
+  OPENVIDU_URL: "http://violet.backend.local:5443/openvidu/api/"

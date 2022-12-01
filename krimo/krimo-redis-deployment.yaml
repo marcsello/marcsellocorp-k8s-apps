@@ -1,0 +1,25 @@
+# TODO: rewrite to stateful set
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: krimo-redis
+  namespace: krimo
+  labels:
+    app: krimo-redis
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: krimo-redis
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: krimo-redis
+    spec:
+      containers:
+        - name: krimo-redis
+          image: redis
+          ports:
+            - containerPort: 6379

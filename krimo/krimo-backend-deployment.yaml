@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: krimo-backend
+  namespace: krimo
+  labels:
+    app: krimo-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: krimo-backend
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: krimo-backend
+    spec:
+      containers:
+        - name: krimo-backend
+          image: marcsello/krimo-backend
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8000
+          envFrom:
+            - configMapRef:
+                name: krimo-backend-conf
+            - secretRef:
+                name: krimo-backend-secrets

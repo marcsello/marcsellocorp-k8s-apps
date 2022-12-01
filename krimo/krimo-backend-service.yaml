@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: krimo-backend-svc
+  namespace: krimo
+  labels:
+    app: krimo-backend
+spec:
+  ports:
+    - name: krimo-backend
+      port: 80
+      targetPort: 8000
+      protocol: TCP
+  selector:
+    app: krimo-backend
+  type: ClusterIP

@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ponyhug-ingress
+  namespace: ponyhug
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    cert-manager.io/cluster-issuer: "letsencrypt"
+    cert-manager.io/revision-history-limit: "2"
+spec:
+  tls:
+    - hosts:
+        - ponyhug.k8s.marcsello.com
+      secretName: letsencrypt
+  rules:
+    - host: ponyhug.k8s.marcsello.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: ponyhug-backend-svc
+                port:
+                  number: 80
