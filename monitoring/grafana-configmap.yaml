@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: grafana-conf
+  namespace: monitoring
+  labels:
+    app: grafana
+data:
+  # Auth sessions will be stored in the db as well,
+  GF_DATABASE_TYPE: "postgres"
+  GF_DATABASE_HOST: "sunburst.db.local:5432"
+  GF_DATABASE_NAME: "grafana"
+  GF_SERVER_ROOT_URL: "https://grafana.k8s.marcsello.com/"
+  GF_SERVER_PROTOCOL: "http"
