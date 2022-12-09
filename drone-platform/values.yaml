@@ -4,7 +4,6 @@ drone: # https://v2.helm.sh/docs/chart_template_guide/#subcharts-and-global-valu
     enabled: true
     className: "nginx"
     annotations:
-      kubernetes.io/ingress.class: "nginx"
       cert-manager.io/cluster-issuer: "letsencrypt"
       cert-manager.io/revision-history-limit: "2"
     hosts:
