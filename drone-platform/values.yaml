@@ -28,8 +28,8 @@ drone: # https://v2.helm.sh/docs/chart_template_guide/#subcharts-and-global-valu
   extraSecretNamesForEnvFrom:
     - "drone-platform-secrets"
 
-env:
-  DRONE_SERVER_HOST: "drone.k8s.marcsello.com"
-  DRONE_SERVER_PROTO: "https" # https://docs.drone.io/server/reference/drone-server-proto/
-  DRONE_DATABASE_DRIVER: "postgres"
-  
+  env:
+    DRONE_SERVER_HOST: "drone.k8s.marcsello.com"
+    DRONE_SERVER_PROTO: "https" # https://docs.drone.io/server/reference/drone-server-proto/
+    DRONE_DATABASE_DRIVER: "postgres"
+    
