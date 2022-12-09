@@ -1,0 +1,18 @@
+# This is a so-called proxy chart. Idea taken from here: https://github.com/argoproj/argo-cd/issues/2789
+apiVersion: v2
+name: marcsellocorp-drone
+description: Customized Drone Platform used by Marcsello Corp.
+
+# ======================
+# dest. namespace: drone-platform
+# ======================
+
+
+type: application
+version: 0.1.0 # <- increment on any change
+appVersion: "0.6.4" # <- For now I'll keep this in sync with the upstream chart version
+
+dependencies:
+- name: drone
+  version: "0.6.4"
+  repository: https://charts.drone.io

@@ -1,0 +1,34 @@
+# ref: https://github.com/drone/charts/blob/master/charts/drone/values.yaml
+ingress:
+  enabled: true
+  className: "nginx"
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    cert-manager.io/cluster-issuer: "letsencrypt"
+    cert-manager.io/revision-history-limit: "2"
+  hosts:
+    - host: drone.k8s.marcsello.com
+      paths:
+        - path: /
+          pathType: Prefix
+  tls:
+    - hosts:
+        - drone.k8s.marcsello.com
+      secretName: letsencrypt
+
+persistentVolume:
+  ## If you are using SQLite as your DB for Drone, it is recommended to enable persistence. If
+  ## enabled, the Chart will create a PersistentVolumeClaim to store its state in. If you are
+  ## using a DB other than SQLite, set this to false to avoid allocating unused storage.
+  ## If set to false, Drone will use an emptyDir instead, which is ephemeral.
+  ##
+  enabled: false
+
+extraSecretNamesForEnvFrom:
+  - "drone-platform-secrets"
+
+env:
+  DRONE_SERVER_HOST: "drone.k8s.marcsello.com"
+  DRONE_SERVER_PROTO: "https" # https://docs.drone.io/server/reference/drone-server-proto/
+  DRONE_DATABASE_DRIVER: "postgres"
+  
