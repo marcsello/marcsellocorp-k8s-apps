@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: ingatlan-scraper-conf
+  name: ingatlan-janitor-conf
   namespace: ingatlan
   labels:
     app: ingatlan-scraper
