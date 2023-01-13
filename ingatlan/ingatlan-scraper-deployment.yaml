@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: ingatlan-scraper
-          image: marcsello/ingatlan-scraper:4
+          image: marcsello/ingatlan-scraper:7
           imagePullPolicy: IfNotPresent
           envFrom:
             - configMapRef:
