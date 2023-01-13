@@ -1,0 +1,25 @@
+# TODO: rewrite to stateful set
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ingatlan-redis
+  namespace: ingatlan
+  labels:
+    app: ingatlan-redis
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ingatlan-redis
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: ingatlan-redis
+    spec:
+      containers:
+        - name: ingatlan-redis
+          image: redis
+          ports:
+            - containerPort: 6379

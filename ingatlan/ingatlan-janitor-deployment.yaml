@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ingatlan-janitor
+  namespace: ingatlan
+  labels:
+    app: ingatlan-janitor
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ingatlan-janitor
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: ingatlan-janitor
+    spec:
+      containers:
+        - name: ingatlan-janitor
+          image: marcsello/ingatlan-janitor:3
+          imagePullPolicy: IfNotPresent
+          envFrom:
+            - configMapRef:
+                name: ingatlan-janitor-conf
+            - secretRef:
+                name: ingatlan-janitor-secrets

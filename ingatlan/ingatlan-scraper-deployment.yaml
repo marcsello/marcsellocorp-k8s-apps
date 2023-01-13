@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ingatlan-scraper
+  namespace: ingatlan
+  labels:
+    app: ingatlan-scraper
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ingatlan-scraper
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: ingatlan-scraper
+    spec:
+      containers:
+        - name: ingatlan-scraper
+          image: marcsello/ingatlan-scraper:4
+          imagePullPolicy: IfNotPresent
+          envFrom:
+            - configMapRef:
+                name: ingatlan-scraper-conf
+            - secretRef:
+                name: ingatlan-scraper-secrets
