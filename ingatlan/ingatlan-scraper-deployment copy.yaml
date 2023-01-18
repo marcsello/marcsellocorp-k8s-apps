@@ -19,10 +19,10 @@ spec:
     spec:
       containers:
         - name: ingatlan-scraper
-          image: marcsello/ingatlan-scraper:7
+          image: marcsello/ingatlan-scraper:8
           imagePullPolicy: IfNotPresent
           envFrom:
             - configMapRef:
                 name: ingatlan-scraper-conf
             - secretRef:
-                name: ingatlan-scraper-secrets
+                name: ingatlan-postgres-secret

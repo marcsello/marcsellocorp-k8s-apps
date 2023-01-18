@@ -1,28 +1,30 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ingatlan-janitor
+  name: ingatlan-api
   namespace: ingatlan
   labels:
-    app: ingatlan-janitor
+    app: ingatlan-api
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: ingatlan-janitor
+      app: ingatlan-api
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
-        app: ingatlan-janitor
+        app: ingatlan-api
     spec:
       containers:
-        - name: ingatlan-janitor
-          image: marcsello/ingatlan-janitor:5
+        - name: ingatlan-api
+          image: marcsello/ingatlan-api:3
           imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
           envFrom:
-            - configMapRef:
-                name: ingatlan-janitor-conf
             - secretRef:
                 name: ingatlan-postgres-secret
+            - secretRef:
+                name: ingatlan-api-secrets
