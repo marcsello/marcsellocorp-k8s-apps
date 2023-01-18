@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: ingatlan-api
-          image: marcsello/ingatlan-api:3
+          image: marcsello/ingatlan-api:4
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
