@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: ingatlan-janitor
-          image: marcsello/ingatlan-janitor:5
+          image: marcsello/ingatlan-janitor:6
           imagePullPolicy: IfNotPresent
           envFrom:
             - configMapRef:
