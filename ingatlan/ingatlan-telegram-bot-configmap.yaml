@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ingatlan-telegram-bot-conf
+  namespace: ingatlan
+  labels:
+    app: ingatlan-telegram-bot
+data:
+  REDIS: "redis://ingatlan-redis-svc:6379/0"
+  PUBLIC_URL: "https://ingatlan-tg-bot.k8s.marcsello.com/"

@@ -1,30 +1,32 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ingatlan-api
+  name: ingatlan-telegram-bot
   namespace: ingatlan
   labels:
-    app: ingatlan-api
+    app: ingatlan-telegram-bot
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: ingatlan-api
+      app: ingatlan-telegram-bot
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
-        app: ingatlan-api
+        app: ingatlan-telegram-bot
     spec:
       containers:
-        - name: ingatlan-api
-          image: marcsello/ingatlan-api:12
+        - name: ingatlan-telegram-bot
+          image: marcsello/ingatlan-telegram-bot:1
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
           envFrom:
+            - configMapRef:
+                name: ingatlan-telegram-bot-conf
             - secretRef:
                 name: ingatlan-postgres-secret
             - secretRef:
-                name: ingatlan-api-secrets
+                name: ingatlan-telegram-bot-secrets

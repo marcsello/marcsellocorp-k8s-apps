@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ingatlan-telegram-bot-svc
+  namespace: ingatlan
+  labels:
+    app: ingatlan-telegram-bot
+spec:
+  ports:
+    - name: ingatlan-telegram-bot
+      port: 80
+      targetPort: 8080
+      protocol: TCP
+  selector:
+    app: ingatlan-telegram-bot
+  type: ClusterIP

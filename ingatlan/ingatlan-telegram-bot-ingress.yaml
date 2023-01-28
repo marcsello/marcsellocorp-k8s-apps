@@ -1,0 +1,26 @@
+# Those two might be better if they were merged to a single ingress... dunno
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingatlan-telegram-bot-ingress
+  namespace: ingatlan
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    cert-manager.io/cluster-issuer: "letsencrypt"
+    cert-manager.io/revision-history-limit: "2"
+spec:
+  tls:
+    - hosts:
+        - ingatlan-tg-bot.k8s.marcsello.com
+      secretName: letsencrypt
+  rules:
+    - host: ingatlan-tg-bot.k8s.marcsello.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: ingatlan-telegram-bot-svc
+                port:
+                  number: 80
