@@ -10,10 +10,10 @@ metadata:
 spec:
   tls:
     - hosts:
-        - ingatlan.k8s.marcsello.com
-      secretName: letsencrypt
+        - ingatlan-api.k8s.marcsello.com
+      secretName: letsencrypt-api
   rules:
-    - host: ingatlan.k8s.marcsello.com
+    - host: ingatlan-api.k8s.marcsello.com
       http:
         paths:
           - path: /

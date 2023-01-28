@@ -12,7 +12,7 @@ spec:
   tls:
     - hosts:
         - ingatlan-tg-bot.k8s.marcsello.com
-      secretName: letsencrypt
+      secretName: letsencrypt-tg-bot
   rules:
     - host: ingatlan-tg-bot.k8s.marcsello.com
       http:
