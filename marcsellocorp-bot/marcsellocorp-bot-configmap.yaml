@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: marcsellocorp-bot-conf
+  namespace: marcsellocorp-bot
+  labels:
+    app: marcsellocorp-bot
+data:
+  PUBLIC_URL: https://marcsellocorp-telegram-bot.k8s.marcsello.com/

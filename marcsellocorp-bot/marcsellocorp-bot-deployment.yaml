@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: marcsellocorp-bot
+  namespace: marcsellocorp-bot
+  labels:
+    app: marcsellocorp-bot
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: marcsellocorp-bot
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: marcsellocorp-bot
+    spec:
+      containers:
+        - name: marcsellocorp-bot
+          image: marcsello/marcsellocorp-bot:1
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+          envFrom:
+            - configMapRef:
+                name: marcsellocorp-bot-conf
+            - secretRef:
+                name: marcsellocorp-bot-secrets

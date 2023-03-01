@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: marcsellocorp-bot-ingress
+  namespace: marcsellocorp-bot
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    cert-manager.io/cluster-issuer: "letsencrypt"
+    cert-manager.io/revision-history-limit: "2"
+spec:
+  tls:
+    - hosts:
+        - marcsellocorp-telegram-bot.k8s.marcsello.com
+      secretName: letsencrypt
+  rules:
+    - host: marcsellocorp-telegram-bot.k8s.marcsello.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: marcsellocorp-bot-svc
+                port:
+                  number: 80
