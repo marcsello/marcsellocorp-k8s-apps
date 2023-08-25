@@ -11,7 +11,10 @@ spec:
     matchLabels:
       app: ponyhug-backend
   strategy:
-    type: Recreate
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
   template:
     metadata:
       labels:
@@ -19,7 +22,7 @@ spec:
     spec:
       containers:
         - name: ponyhug-backend
-          image: marcsello/ponyhug-backend
+          image: marcsello/ponyhug-backend:15
           imagePullPolicy: Always
           ports:
             - containerPort: 8000
@@ -29,8 +32,12 @@ spec:
             - secretRef:
                 name: ponyhug-backend-secrets
           livenessProbe:
-            initialDelaySeconds: 2
+            initialDelaySeconds: 10
             periodSeconds: 5
             httpGet:
               path: /healthz
               port: 8000
+          resources:
+            requests:
+              cpu: 50m
+              memory: 150m

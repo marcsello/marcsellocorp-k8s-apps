@@ -6,6 +6,6 @@ metadata:
   labels:
     app: ponyhug-backend
 data:
-  SENTRY_RELEASE_ID: 2022-final
+  SENTRY_RELEASE_ID: 2023-final
   SENTRY_ENVIRONMENT: prod
   ALLOWED_ORIGINS: "https://hugs.hunbrony.hu"
