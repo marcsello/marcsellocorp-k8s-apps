@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: marcsellocorp-bot-svc
+  name: marcsellocorp-bot-api-svc
   namespace: marcsellocorp-bot
   labels:
     app: marcsellocorp-bot
@@ -10,7 +10,7 @@ spec:
   ports:
     - name: marcsellocorp-bot
       port: 80
-      targetPort: 8080
+      targetPort: 8081
       protocol: TCP
   selector:
     app: marcsellocorp-bot

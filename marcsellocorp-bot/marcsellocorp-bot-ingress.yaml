@@ -10,16 +10,27 @@ metadata:
 spec:
   tls:
     - hosts:
-        - marcsellocorp-telegram-bot.k8s.marcsello.com
+        - callback.marcsellocorp-telegram-bot.k8s.marcsello.com
+        - api.marcsellocorp-telegram-bot.k8s.marcsello.com
       secretName: letsencrypt
   rules:
-    - host: marcsellocorp-telegram-bot.k8s.marcsello.com
+    - host: callback.marcsellocorp-telegram-bot.k8s.marcsello.com
       http:
         paths:
           - path: /
             pathType: Prefix
             backend:
               service:
-                name: marcsellocorp-bot-svc
+                name: marcsellocorp-bot-callback-svc
+                port:
+                  number: 80
+    - host: api.marcsellocorp-telegram-bot.k8s.marcsello.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: marcsellocorp-bot-api-svc
                 port:
                   number: 80

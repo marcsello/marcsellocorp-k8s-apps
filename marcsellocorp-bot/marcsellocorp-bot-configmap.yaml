@@ -6,4 +6,5 @@ metadata:
   labels:
     app: marcsellocorp-bot
 data:
-  PUBLIC_URL: https://marcsellocorp-telegram-bot.k8s.marcsello.com/
+  WEBHOOK_PUBLIC_URL: https://callback.marcsellocorp-telegram-bot.k8s.marcsello.com/
+  REDIS_URL: "redis://marcsellocorp-bot-redis-svc:6379/0"

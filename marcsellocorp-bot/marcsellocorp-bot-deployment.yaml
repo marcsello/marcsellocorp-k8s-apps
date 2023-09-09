@@ -19,10 +19,11 @@ spec:
     spec:
       containers:
         - name: marcsellocorp-bot
-          image: marcsello/marcsellocorp-bot:2
+          image: marcsello/marcsellocorp-bot:6
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
+            - containerPort: 8081
           envFrom:
             - configMapRef:
                 name: marcsellocorp-bot-conf

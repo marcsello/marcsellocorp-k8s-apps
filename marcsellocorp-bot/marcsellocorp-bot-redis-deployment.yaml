@@ -1,0 +1,25 @@
+# TODO: rewrite to stateful set
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: marcsellocorp-bot-redis
+  namespace: marcsellocorp-bot
+  labels:
+    app: marcsellocorp-bot-redis
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: marcsellocorp-bot-redis
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: marcsellocorp-bot-redis
+    spec:
+      containers:
+        - name: redis
+          image: redis
+          ports:
+            - containerPort: 6379
