@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: marcsellocorp-bot
-          image: marcsello/marcsellocorp-bot:14
+          image: marcsello/marcsellocorp-bot:15
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
