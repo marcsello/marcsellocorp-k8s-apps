@@ -21,7 +21,7 @@ spec:
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8000
-              name: http-healthchecks
+              name: http-hc
               protocol: TCP
           envFrom:
             - configMapRef:
