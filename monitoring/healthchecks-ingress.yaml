@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: grafana-ingress
+  name: healthchecks-ingress
   namespace: monitoring
   annotations:
     kubernetes.io/ingress.class: "nginx"
@@ -10,16 +10,16 @@ metadata:
 spec:
   tls:
     - hosts:
-        - grafana.monitoring.k8s.marcsello.com
+        - memechecks.monitoring.k8s.marcsello.com
       secretName: letsencrypt
   rules:
-    - host: grafana.monitoring.k8s.marcsello.com
+    - host: memechecks.monitoring.k8s.marcsello.com
       http:
         paths:
           - path: /
             pathType: Prefix
             backend:
               service:
-                name: grafana-svc
+                name: healthchecks-svc
                 port:
                   number: 80

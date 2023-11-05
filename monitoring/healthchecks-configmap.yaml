@@ -1,0 +1,56 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: healthchecks-conf
+  namespace: monitoring
+  labels:
+    app: healthchecks
+data:
+  ALLOWED_HOSTS: "memechecks.monitoring.k8s.marcsello.com"
+  DEFAULT_FROM_EMAIL: "hc@luna.sch.bme.hu"
+  SITE_ROOT: "https://memechecks.monitoring.k8s.marcsello.com"
+  DEBUG: "False"
+  EMAIL_USE_VERIFICATION: "True"
+
+  # DB Setup
+  DB: postgres
+  DB_USER: healthchecks
+  DB_HOST: sunburst.db.local
+  DB_NAME: healthchecks
+  DB_CONN_MAX_AGE: "0"
+  DB_PORT: "5432"
+  DB_SSLMODE: prefer
+  DB_TARGET_SESSION_ATTRS: read-write
+
+  # allow webhooks to call other services
+  INTEGRATIONS_ALLOW_PRIVATE_IPS: "True"
+
+  PING_BODY_LIMIT: "10000"
+  PING_EMAIL_DOMAIN: localhost # TODO
+  PING_ENDPOINT: https://memechecks.monitoring.k8s.marcsello.com/ping/
+  REGISTRATION_OPEN: "False"
+  
+  # Branding
+  SITE_LOGO_URL: "https://monitoring.marcsello.com/troll.svg"
+  SITE_NAME: Memechecks
+  MASTER_BADGE_LABEL: Memechecks
+
+  # Enable some applications
+  TELEGRAM_ENABLED: "True"
+  WEBHOOKS_ENABLED: "True"
+  PROMETHEUS_ENABLED: "True"
+
+  # Disable all integration we don't need
+  MATTERMOST_ENABLED: "False"
+  MSTEAMS_ENABLED: "False"
+  OPSGENIE_ENABLED: "False"
+  PAGERTREE_ENABLED: "False"
+  PD_ENABLED: "False"
+  SHELL_ENABLED: "False"
+  ROCKETCHAT_ENABLED: "False"
+  SLACK_ENABLED: "False"
+  SPIKE_ENABLED: "False"
+  USE_PAYMENTS: "False"
+  VICTOROPS_ENABLED: "False"  
+  ZULIP_ENABLED: "False"
+  APPRISE_ENABLED: "False"
