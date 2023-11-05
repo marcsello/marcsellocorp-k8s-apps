@@ -6,8 +6,8 @@ metadata:
   labels:
     app: healthchecks
 data:
-  ALLOWED_HOSTS: "*"  # Healthchecks should work
-  DEFAULT_FROM_EMAIL: "hc@luna.sch.bme.hu"
+  ALLOWED_HOSTS: "*" # k8s health checks should work
+  DEFAULT_FROM_EMAIL: "memechecks@luna.sch.bme.hu"
   SITE_ROOT: "https://memechecks.monitoring.k8s.marcsello.com"
   DEBUG: "False"
   EMAIL_USE_VERIFICATION: "True"

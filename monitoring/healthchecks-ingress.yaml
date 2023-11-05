@@ -11,7 +11,7 @@ spec:
   tls:
     - hosts:
         - memechecks.monitoring.k8s.marcsello.com
-      secretName: letsencrypt
+      secretName: healthchecks-letsencrypt
   rules:
     - host: memechecks.monitoring.k8s.marcsello.com
       http:

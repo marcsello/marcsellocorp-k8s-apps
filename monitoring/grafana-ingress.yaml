@@ -11,7 +11,7 @@ spec:
   tls:
     - hosts:
         - grafana.monitoring.k8s.marcsello.com
-      secretName: letsencrypt
+      secretName: grafana-letsencrypt
   rules:
     - host: grafana.monitoring.k8s.marcsello.com
       http:
