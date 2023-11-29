@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ttaproxy-ingress
+  namespace: monitoring
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    cert-manager.io/cluster-issuer: "letsencrypt"
+    cert-manager.io/revision-history-limit: "2"
+spec:
+  tls:
+    - hosts:
+        - telegraf.monitoring.k8s.marcsello.com
+      secretName: telegraf-letsencrypt
+  rules:
+    - host: telegraf.monitoring.k8s.marcsello.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: ttaproxy-svc
+                port:
+                  number: 80

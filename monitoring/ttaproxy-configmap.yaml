@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ttaproxy-conf
+  namespace: monitoring
+  labels:
+    app: ttaproxy
+data:
+  HTPASSWD_PATH: "/etc/ttaproxy-htpasswd/.htpasswd"
+  BASIC_AUTH_REALM: "marcsello-corp"
