@@ -56,8 +56,8 @@ spec:
                 - "ALL"
       volumes:
         - name: telegraf-config
-          secret:
-            secretName: telegraf-config-file
+          configMap:
+            name: telegraf-config-file
         - name: local-ca-cert
           secret:
             secretName: marcsellocorp-local-ca-cert
