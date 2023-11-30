@@ -22,7 +22,7 @@ spec:
         runAsUser: 2000
         runAsGroup: 2000
       containers:
-        - name: ttaproxy
+        - name: telegraf
           image: "telegraf:1.28"
           imagePullPolicy: IfNotPresent
           ports:
