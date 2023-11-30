@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: telegraf-config
+  name: telegraf-config-file
   namespace: monitoring
 data:
   telegraf.conf: |+
