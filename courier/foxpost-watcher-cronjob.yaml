@@ -1,0 +1,39 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: foxpost-watcher
+  namespace: courier
+  labels:
+    app: foxpost-watcher
+spec:
+  schedule: "2 * * * *"
+  startingDeadlineSeconds: 2700 # 45min
+  concurrencyPolicy: Replace
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          restartPolicy: OnFailure
+          containers:
+          - name: foxpost-watcher
+            image: "marcsello/foxpost-watcher:5"
+            imagePullPolicy: IfNotPresent
+            envFrom:
+            - configMapRef:
+                name: foxpost-watcher-conf
+            - secretRef:
+                name: foxpost-watcher-secrets
+            resources:
+            requests:
+              cpu: 50m
+              memory: 100Mi
+            securityContext:
+              readOnlyRootFilesystem: true
+              allowPrivilegeEscalation: false
+              privileged: false
+              runAsUser: 1000
+              runAsGroup: 1000
+              capabilities:
+                drop:
+                  - "ALL"
+          

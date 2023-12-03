@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: foxpost-watcher-conf
+  namespace: courier
+  labels:
+    app: ttaproxy
+data:
+  ONESHOT: "yes"
+  INFLUX_SERVER_URL: "https://moondancer.db.local:8086"
+  INFLUX_SERVER_ORG: "marcsello-corp"
+  INFLUX_SERVER_BUCKET: "courier"
+  INVOCATION_TIMEOUT: "5m"
