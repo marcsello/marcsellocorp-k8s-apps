@@ -16,7 +16,7 @@ spec:
           restartPolicy: OnFailure
           containers:
           - name: foxpost-watcher
-            image: "marcsello/foxpost-watcher:6"
+            image: "marcsello/foxpost-watcher:7"
             imagePullPolicy: IfNotPresent
             envFrom:
             - configMapRef:
