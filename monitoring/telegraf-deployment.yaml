@@ -23,7 +23,7 @@ spec:
         runAsGroup: 2000
       containers:
         - name: telegraf
-          image: "telegraf:1.28"
+          image: "telegraf:1.29.4"
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8000
