@@ -30,8 +30,8 @@ spec:
             - secretRef:
                 name: postmark-relay-secrets
           livenessProbe:
-            initialDelaySeconds: 10
-            periodSeconds: 5
+            initialDelaySeconds: 15
+            periodSeconds: 60
             httpGet:
               path: /healthz
               port: 8000
