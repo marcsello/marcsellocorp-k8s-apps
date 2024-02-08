@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
         - name: postmark-relay
-          image: pproj/postmark-relay:8
+          image: pproj/postmark-relay:9
           imagePullPolicy: Always
           ports:
             - containerPort: 8000
