@@ -5,10 +5,10 @@ metadata:
   name: ingatlan-telegram-bot-ingress
   namespace: ingatlan
   annotations:
-    kubernetes.io/ingress.class: "nginx"
     cert-manager.io/cluster-issuer: "letsencrypt"
     cert-manager.io/revision-history-limit: "2"
 spec:
+  ingressClassName: "nginx"
   tls:
     - hosts:
         - ingatlan-tg-bot.k8s.marcsello.com
