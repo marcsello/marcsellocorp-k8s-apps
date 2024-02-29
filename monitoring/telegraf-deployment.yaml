@@ -6,6 +6,7 @@ metadata:
   labels:
     app: telegraf
 spec:
+  revisionHistoryLimit: 2
   minReadySeconds: 5
   replicas: 2
   selector:
@@ -23,7 +24,7 @@ spec:
         runAsGroup: 2000
       containers:
         - name: telegraf
-          image: "telegraf:1.29.4"
+          image: "telegraf:1.29.5"
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8000

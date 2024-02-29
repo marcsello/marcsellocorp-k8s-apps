@@ -6,6 +6,7 @@ metadata:
   name: healthchecks
   namespace: monitoring
 spec:
+  revisionHistoryLimit: 2
   replicas: 1
   selector:
     matchLabels:
@@ -17,7 +18,7 @@ spec:
     spec:
       containers:
         - name: healthchecks
-          image: healthchecks/healthchecks:v3.1
+          image: healthchecks/healthchecks:v3.2
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8000
