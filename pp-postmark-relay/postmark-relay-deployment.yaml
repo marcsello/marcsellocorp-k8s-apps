@@ -22,11 +22,13 @@ spec:
     spec:
       containers:
         - name: postmark-relay
-          image: pproj/postmark-relay:9
+          image: pproj/postmark-relay:11
           imagePullPolicy: Always
           ports:
             - containerPort: 8000
           envFrom:
+            - configMapRef:
+                name: postmark-relay-conf
             - secretRef:
                 name: postmark-relay-secrets
           livenessProbe:
@@ -39,3 +41,11 @@ spec:
             requests:
               cpu: 50m
               memory: 150m
+          volumeMounts:
+            - mountPath: "/mapping"
+              readOnly: true
+              name: "address_mapping"
+      volumes:
+        - name: "address_mapping"
+          secret:
+            secretName: "postmark-relay-mapping"

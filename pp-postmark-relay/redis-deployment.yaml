@@ -1,0 +1,25 @@
+# TODO: rewrite to stateful set
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postmark-relay-redis
+  namespace: pp-postmark-relay
+  labels:
+    app: postmark-relay-redis
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: postmark-relay-redis
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: postmark-relay-redis
+    spec:
+      containers:
+        - name: redis
+          image: redis
+          ports:
+            - containerPort: 6379
