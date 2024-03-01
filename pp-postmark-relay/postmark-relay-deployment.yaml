@@ -44,8 +44,8 @@ spec:
           volumeMounts:
             - mountPath: "/mapping"
               readOnly: true
-              name: "address_mapping"
+              name: "address-mapping"
       volumes:
-        - name: "address_mapping"
+        - name: "address-mapping"
           secret:
             secretName: "postmark-relay-mapping"
