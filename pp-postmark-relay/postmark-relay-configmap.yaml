@@ -7,5 +7,4 @@ metadata:
     app: postmark-relay
 data:
   TELEGRAM_ADDRESS_MAPPING_PATH: "/mapping/mapping.json"
-  REDIS_URL: "redis://postmark-relay-redis-svc:6379/0"
   SELF_URL_BASE: "https://postmark-relay.pp.k8s.marcsello.com/"
