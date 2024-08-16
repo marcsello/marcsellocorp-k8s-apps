@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ponyhug2-backend-conf
+  namespace: ponyhug2
+  labels:
+    app: ponyhug2-backend
+data:
+  ALLOWED_ORIGINS: "https://pony2.marcsello.com"

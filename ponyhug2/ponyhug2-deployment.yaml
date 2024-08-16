@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ponyhug2-backend
+  namespace: ponyhug2
+  labels:
+    app: ponyhug2-backend
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: ponyhug2-backend
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  template:
+    metadata:
+      labels:
+        app: ponyhug2-backend
+    spec:
+      containers:
+        - name: ponyhug2-backend
+          image: marcsello/ponyhug2-backend:2
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8000
+          envFrom:
+            - configMapRef:
+                name: ponyhug2-backend-conf
+            - secretRef:
+                name: ponyhug2-backend-secrets
+          livenessProbe:
+            initialDelaySeconds: 10
+            periodSeconds: 5
+            httpGet:
+              path: /healthz
+              port: 8000
+          resources:
+            requests:
+              cpu: 50m
+              memory: 150m
