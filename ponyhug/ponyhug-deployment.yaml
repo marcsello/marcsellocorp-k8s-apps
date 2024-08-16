@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
         - name: ponyhug-backend
-          image: marcsello/ponyhug-backend:15
+          image: marcsello/ponyhug-backend:29
           imagePullPolicy: Always
           ports:
             - containerPort: 8000
