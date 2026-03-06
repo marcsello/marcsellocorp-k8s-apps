@@ -16,6 +16,9 @@ drone: # https://v2.helm.sh/docs/chart_template_guide/#subcharts-and-global-valu
           - drone.k8s.marcsello.com
         secretName: letsencrypt
 
+  image:
+    tag: 2.27.1
+
   persistentVolume:
     ## If you are using SQLite as your DB for Drone, it is recommended to enable persistence. If
     ## enabled, the Chart will create a PersistentVolumeClaim to store its state in. If you are

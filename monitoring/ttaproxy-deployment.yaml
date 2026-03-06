@@ -23,7 +23,7 @@ spec:
         runAsGroup: 2000
       containers:
         - name: ttaproxy
-          image: "marcsello/telegraf-anti-cheat-proxy:5"
+          image: "marcsello/telegraf-tag-auth-proxy:7"
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8000
